@@ -1,0 +1,16 @@
+{
+  "name": "sparkpeople-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Ryan Kara",
+  "license": "MIT",
+  "dependencies": {
+    "html-pdf-node": "^1.0.7",
+    "node-html-parser": "^4.1.3"
+  }
+}
