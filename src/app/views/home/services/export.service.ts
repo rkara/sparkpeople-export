@@ -11,7 +11,7 @@ export class ExportService {
 
   exportBlog$(userId: string): Observable<any> {
     return this.http
-      .get(`http://localhost:3001/api/blogs/${userId}`, {
+      .get(`https://sparkpeople-backup.herokuapp.com/api/blogs/${userId}`, {
         responseType: 'blob',
       })
       .pipe(
