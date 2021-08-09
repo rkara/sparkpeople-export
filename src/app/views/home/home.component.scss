@@ -1,0 +1,41 @@
+@use '~@angular/material' as mat;
+
+$primary: mat.define-palette(mat.$purple-palette, 500);
+$green: mat.define-palette(mat.$green-palette, 500);
+$red: mat.define-palette(mat.$red-palette, 500);
+
+.home__search-card {
+  padding: 27px;
+  max-width: 95%;
+}
+
+.home__search-card ::ng-deep .mat-card-header-text {
+  margin-left: 0;
+}
+
+.home {
+  background-color: map-get($primary, 50);
+}
+
+.home__search-field {
+  margin-top: 18px;
+}
+
+.home__search-button {
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.home__search-text {
+  font-weight: 500;
+}
+
+.home__search-legal {
+  margin-top: -15px;
+  font-size: 14px;
+}
+
+::ng-deep .home__snackbar--error {
+  background-color: map-get($red, 400);
+  color: white;
+}
