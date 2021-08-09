@@ -1,0 +1,18 @@
+.app__footer {
+  padding: 10px;
+}
+
+.app_footer p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.social-icons {
+  line-height: 46px;
+  text-align: right;
+}
+
+.social-icons i {
+  font-size: 27px;
+}

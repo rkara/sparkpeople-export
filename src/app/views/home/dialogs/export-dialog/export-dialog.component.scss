@@ -1,0 +1,28 @@
+@use '~@angular/material' as mat;
+
+$primary: mat.define-palette(mat.$purple-palette, 500);
+$green: mat.define-palette(mat.$green-palette, 500);
+$red: mat.define-palette(mat.$red-palette, 500);
+
+.export__state--success {
+  color: map-get($green, 400);
+}
+
+.export__state--error {
+  color: map-get($red, 400);
+}
+
+.export__button {
+  text-transform: uppercase;
+}
+
+.export__state-icon-container {
+  margin: 36px auto !important;
+  text-align: center;
+}
+
+.export__state-icon {
+  font-size: 64px;
+  height: 64px;
+  width: 64px;
+}

@@ -1,0 +1,27 @@
+@use '~@angular/material' as mat;
+
+$primary: mat.define-palette(mat.$purple-palette, 500);
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: map-get($primary, "default");
+  transition: 0.3s ease color;
+
+  &:hover {
+    color: map-get($primary, 300);
+  }
+}
