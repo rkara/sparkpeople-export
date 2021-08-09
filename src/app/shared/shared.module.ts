@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -30,8 +32,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
+    MatDialogModule,
     MatCardModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class AppSharedModule {}

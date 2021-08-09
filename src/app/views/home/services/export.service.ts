@@ -18,10 +18,7 @@ export class ExportService {
         map((res) => {
           return res;
         }),
-        catchError((e) => {
-          debugger;
-          return of(undefined);
-        })
+        catchError((e) => of(undefined))
       );
   }
 }

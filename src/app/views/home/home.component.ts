@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
+import { ExportDialogComponent } from './dialogs/export-dialog/export-dialog.component';
 import { ExportService } from './services/export.service';
 
 @Component({
@@ -13,10 +15,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   exporting = false;
 
   private subscriptions = new Subscription();
+  private dialogRef?: MatDialogRef<ExportDialogComponent>;
 
   constructor(
     private exportService: ExportService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {}
@@ -29,6 +33,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.userId.trim().length > 0) {
       const userId = this.userId.trim();
       this.exporting = true;
+
+      this.dialogRef = this.dialog.open(ExportDialogComponent, {
+        width: '350px',
+        height: '450px',
+        disableClose: true,
+      });
+
       this.subscriptions.add(
         this.exportService.exportBlog$(userId).subscribe((pdfFile) => {
           if (pdfFile) {
@@ -42,6 +53,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private onError(message: string) {
+    if (this.dialogRef) {
+      this.dialogRef.componentInstance.setError();
+    }
     this.snackBar.open(message, undefined, {
       duration: 5000,
       panelClass: 'home__snackbar--error',
@@ -49,7 +63,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private onSuccess(blogName: string, pdfFile: any) {
-    // TODO: Display success dialog
+    if (this.dialogRef) {
+      this.dialogRef.componentInstance.setSuccess();
+    }
     // Create a link pointing to the ObjectURL containing the blob.
     const data = window.URL.createObjectURL(pdfFile);
 

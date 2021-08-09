@@ -1,0 +1,47 @@
+<div class="export" fxFlexFill fxLayout="column">
+  <h1 mat-dialog-title>Exporting Blog to PDF</h1>
+  <div mat-dialog-content fxFlex>
+    <ng-container [ngSwitch]="exportState">
+      <ng-container *ngSwitchCase="1">
+        <div class="export__state" fxLayout="column" fxLayoutGap="10px">
+          <div fxFlex="64px" class="export__state-icon-container">
+            <mat-spinner [diameter]="36"></mat-spinner>
+          </div>
+          <p>Your blog is being processed.</p>
+
+          <p>This may take some time.</p>
+        </div>
+        <!-- Exporting -->
+      </ng-container>
+      <ng-container *ngSwitchCase="2">
+        <div class="export__state" fxLayout="column" fxLayoutGap="10px">
+          <div fxFlex="64px" class="export__state-icon-container">
+            <mat-icon class="export__state-icon export__state--success">check_circle</mat-icon>
+          </div>
+          <p>Your blog has been successfully exported!</p>
+        </div>
+        <!-- Success -->
+      </ng-container>
+      <ng-container *ngSwitchCase="3">
+        <div class="export__state" fxLayout="column" fxLayoutGap="10px">
+          <div fxFlex="64px" class="export__state-icon-container">
+            <mat-icon class="export__state-icon export__state--error">warning</mat-icon>
+          </div>
+          <p>There was an error exporting your blog.</p>
+
+          <p>
+            If you're still interested, please reach out to
+            <a href="mailto:ryan@rkara.us?subject=SparkMail Help">Ryan</a> for
+            assistance and include your blog id in the email.
+          </p>
+        </div>
+        <!-- Error -->
+      </ng-container>
+    </ng-container>
+  </div>
+  <div mat-dialog-actions>
+    <a class="export__button" mat-button href="https://www.paypal.com/donate?hosted_button_id=KPNZX9GJWL3RQ" target="_blank" color="primary"
+      >Say Thanks</a
+    >
+  </div>
+</div>
