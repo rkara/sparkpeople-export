@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/f2b8285a-471d-4918-bf55-0a0f7b16339c/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/sparkpeople-backup",
+    "appService.deploySubpath": "."
+}

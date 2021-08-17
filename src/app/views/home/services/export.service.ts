@@ -11,7 +11,7 @@ export class ExportService {
 
   exportBlog$(userId: string): Observable<any> {
     return this.http
-      .get(`https://sparkpeople-export.vercel.app/api/blogs/${userId}`, {
+      .get(`http://rkara.ddns.net/api/blogs/${userId}`, {
         responseType: 'blob',
       })
       .pipe(

@@ -9,8 +9,7 @@ export class BlogService {
   static GetBlogPdfFile(userId: string) {
     const uri = `${SPARK_ROOT}/mypage_public_journal_summary.asp?id=${userId}`;
     return this.GetSparkPeopleBlogIds(uri).then((blogIds) => {
-
-      if(blogIds.length === 0) {
+      if (blogIds.length === 0) {
         return Promise.reject('Blog not found');
       }
 
@@ -35,7 +34,9 @@ export class BlogService {
             },
           };
           const file = { content: pageContent };
-          console.log('Generating PDF Document');
+          console.log(
+            `[${new Date().toTimeString()}] - Generating PDF Document`
+          );
 
           return html_to_pdf
             .generatePdf(file, options)
@@ -76,7 +77,11 @@ export class BlogService {
         return ` <html>
             ${style}
             <body>
-                ${entryBody.outerHTML.replace('Report Inappropriate Blog', '')}
+                ${entryBody.outerHTML
+                  .replace('Report Inappropriate Blog', '')
+                  .replace('{{{{{{{ HUGS }}}}}}}', '')
+                  .replace('{{', '')
+                  .replace('}}', '')}
             </body>
         </html>`;
       })
@@ -89,7 +94,7 @@ export class BlogService {
   private static GetSparkPeopleBlogIds(uri: string) {
     return this.GetSparkPeoplePageCount(uri)
       .then((pageCount) => {
-        if(pageCount === 0) {
+        if (pageCount === 0) {
           return Promise.reject('Unable to find blog');
         }
         const promiseArr = [];
@@ -132,7 +137,7 @@ export class BlogService {
         return blogPostLinks;
       })
       .catch((_) => {
-        return { error: 'Unable to find blog'};
+        return { error: 'Unable to find blog' };
       });
   }
 

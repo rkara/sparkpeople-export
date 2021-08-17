@@ -10,5 +10,5 @@ app.use('/api/blogs', BlogController);
 
 app.use('/', express.static('dist/spark-backup'));
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 80;
 app.listen(port, () => console.log(`Api started on port ${port}`));
